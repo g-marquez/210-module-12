@@ -10,6 +10,8 @@
 using namespace std;
 
 const int INITIAL_SIZE = 2;
+const int PAY_PROB = 55;
+const int JOIN_PROB = 45;
 
 int main() {
     srand(time(0)); //for RNG
@@ -32,6 +34,22 @@ int main() {
     }
     else 
         cout << "empty";
+
+    //begin simulation
+    for (int i = 0; i < tollLine.size(); ++i) {
+        cout << "Time: " << i + 1;
+        cout << " Operation: ";
+        //randomly choose pay or join
+        int prob = rand() % 100 + 1; //car in front pays and leaves
+        if (prob <= PAY_PROB) {
+            cout << "Car paid: ";
+            Car temp = tollLine.front();
+            temp.print();
+        }
+        else { //car joins the back of the queue
+
+        }
+    }
 
     return 0;
 }
