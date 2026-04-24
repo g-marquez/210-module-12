@@ -23,14 +23,16 @@ int main() {
 
     //print initial queue of cars
     cout << "Initial queue:" << endl;
-    //check if deque is empty first
+    //exercise deque methods and display cars
     if (!tollLine.empty()) {
-        for (auto &car : tollLine) {
-            cout << "\t";
-            car.print();
-            cout << endl;
-        }
+        Car car1 = tollLine.front();
+        Car car2 = tollLine.back();
+        cout << "\t";
+        car1.print();
+        car2.print();
     }
+    else 
+        cout << "empty";
 
     return 0;
 }
