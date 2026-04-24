@@ -8,3 +8,18 @@
 #include <iostream>
 #include <deque>
 using namespace std;
+
+const int INITIAL_SIZE = 2;
+
+int main() {
+    srand(time(0)); //for RNG
+
+    //declare deque of Cars and populate with 2 cars
+    deque<Car> tollLine;
+    for (int i = 0; i < INITIAL_SIZE; ++i) {
+        Car temp = Car();
+        tollLine.push_back(temp);
+    }
+
+    return 0;
+}
