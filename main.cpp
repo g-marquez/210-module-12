@@ -36,8 +36,9 @@ int main() {
         cout << "empty";
 
     //begin simulation
-    for (int i = 0; i < tollLine.size(); ++i) {
-        cout << "Time: " << i + 1;
+    while (!tollLine.empty()) {
+        static int i = 1;
+        cout << "Time: " << i++;
         cout << " Operation: ";
         //randomly choose pay or join
         int prob = rand() % 100 + 1; //car in front pays and leaves
@@ -47,8 +48,22 @@ int main() {
             temp.print();
         }
         else { //car joins the back of the queue
-
+            cout << "Joined lane: ";
+            Car temp = Car();
+            tollLine.push_back(temp);
+            temp.print();
         }
+        //print queue at end of cycle
+        cout << "Queue: " << endl;
+        if (!tollLine.empty()) {
+            for (auto &car : tollLine) {
+                cout << "\t";
+                car.print();
+            }
+        }
+        else 
+            cout << "empty";
+        cout << endl;
     }
 
     return 0;
