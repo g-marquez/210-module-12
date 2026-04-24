@@ -44,8 +44,8 @@ int main() {
         int prob = rand() % 100 + 1; //car in front pays and leaves
         if (prob <= PAY_PROB) {
             cout << "Car paid: ";
-            Car temp = tollLine.front();
-            temp.print();
+            tollLine.front().print();
+            tollLine.pop_front();
         }
         else { //car joins the back of the queue
             cout << "Joined lane: ";
@@ -54,8 +54,9 @@ int main() {
             temp.print();
         }
         //print queue at end of cycle
-        cout << "Queue: " << endl;
+        cout << "Queue: ";
         if (!tollLine.empty()) {
+            cout << "\n";
             for (auto &car : tollLine) {
                 cout << "\t";
                 car.print();
