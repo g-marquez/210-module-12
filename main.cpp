@@ -21,5 +21,16 @@ int main() {
         tollLine.push_back(temp);
     }
 
+    //print initial queue of cars
+    cout << "Initial queue:" << endl;
+    //check if deque is empty first
+    if (!tollLine.empty()) {
+        for (auto &car : tollLine) {
+            cout << "\t";
+            car.print();
+            cout << endl;
+        }
+    }
+
     return 0;
 }
