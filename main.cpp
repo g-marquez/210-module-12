@@ -1,7 +1,8 @@
 //*****************************************************************************
-// COMSC-210 | Lab 32 | Gabriel Marquez
-// Description: this program simulate a line of cars lined up to pay their toll
-// at a toll booth, utilizing the std::deque container.
+// COMSC-210 | Lab 33 | Gabriel Marquez
+// Description: this program adds functionality to Lab 32's code set by adding
+// multiple lanes into the management system to simulate an entire plaza of toll
+// booths and the capability for a car at the rear of a lane to switch lanes.
 //*****************************************************************************
 
 #include "Car.h"
