@@ -41,26 +41,7 @@ int main() {
         i++;
     }
 
-    /* //declare deque of Cars and populate with 2 cars
-    deque<Car> tollLine;
-    for (int i = 0; i < INITIAL_SIZE; ++i) {
-        Car temp = Car();
-        tollLine.push_back(temp);
-    }
-
-    //print initial queue of cars
-    cout << "Initial queue: " << endl;
-    //coding this way specifically to exercise deque methods
-    if (!tollLine.empty()) {
-        Car car1 = tollLine.front();
-        Car car2 = tollLine.back();
-        cout << "\t"; car1.print();
-        cout << "\t"; car2.print();
-    }
-    else 
-        cout << "empty";
-
-    //begin simulation
+    /*//begin simulation
     while (!tollLine.empty()) {
         static int i = 1;
         cout << "Time: " << i++;
