@@ -21,12 +21,24 @@ int main() {
     //create array of deques
     deque<Car> plaza[LANES];
 
-    cout << "Testing array of deques... " << endl;
-    cout << "Size of array of deques (should be 4): " << size(plaza);
-    cout << "\nValidating that each element has an empty deque..." << endl;
-    for (int i = 0; i < size(plaza); ++i) {
-        cout << "Deque at element " << i << "...";
-        cout << "Empty? (1 is true) " << plaza[i].empty() << endl;
+    //populate lanes in plaza with 2 cars each
+    for (auto &lane : plaza) {
+        for (int i = 0; i < INITIAL_SIZE; ++i) {
+        Car temp = Car();
+        lane.push_back(temp);
+        }
+    }
+
+    //print initial queue of cars
+    cout << "Initial queue: " << endl;
+    for (auto &lane : plaza) {
+        const int i = 1;
+        cout << "Lane " << i << ":" << endl;
+        for (auto &car : lane) {
+            cout << "\t";
+            car.print();
+        }
+        i++;
     }
 
     /* //declare deque of Cars and populate with 2 cars
