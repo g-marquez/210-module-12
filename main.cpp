@@ -13,11 +13,15 @@ using namespace std;
 const int INITIAL_SIZE = 2;
 const int PAY_PROB = 55;
 const int JOIN_PROB = 45;
+const int LANES = 4;
 
 int main() {
     srand(time(0)); //for RNG
 
-    //declare deque of Cars and populate with 2 cars
+    //create array of deques
+    deque<Car> plaza[LANES];
+
+    /* //declare deque of Cars and populate with 2 cars
     deque<Car> tollLine;
     for (int i = 0; i < INITIAL_SIZE; ++i) {
         Car temp = Car();
@@ -68,5 +72,5 @@ int main() {
         cout << endl;
     }
 
-    return 0;
+    return 0; */
 }
