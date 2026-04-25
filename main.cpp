@@ -21,6 +21,14 @@ int main() {
     //create array of deques
     deque<Car> plaza[LANES];
 
+    cout << "Testing array of deques... " << endl;
+    cout << "Size of array of deques (should be 4): " << sizeof(plaza);
+    cout << "\nValidating that each element has an empty deque..." << endl;
+    for (int i = 0; i < sizeof(plaza); ++i) {
+        cout << "Deque at element " << i << "..." << endl;
+        cout << "\tEmpty? " << plaza[i].empty();
+    }
+
     /* //declare deque of Cars and populate with 2 cars
     deque<Car> tollLine;
     for (int i = 0; i < INITIAL_SIZE; ++i) {
