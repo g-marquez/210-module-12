@@ -22,11 +22,11 @@ int main() {
     deque<Car> plaza[LANES];
 
     cout << "Testing array of deques... " << endl;
-    cout << "Size of array of deques (should be 4): " << sizeof(plaza);
+    cout << "Size of array of deques (should be 4): " << size(plaza);
     cout << "\nValidating that each element has an empty deque..." << endl;
-    for (int i = 0; i < sizeof(plaza); ++i) {
-        cout << "Deque at element " << i << "..." << endl;
-        cout << "\tEmpty? " << plaza[i].empty();
+    for (int i = 0; i < size(plaza); ++i) {
+        cout << "Deque at element " << i << "...";
+        cout << "Empty? (1 is true) " << plaza[i].empty() << endl;
     }
 
     /* //declare deque of Cars and populate with 2 cars
