@@ -32,7 +32,7 @@ int main() {
     //print initial queue of cars
     cout << "Initial queue: " << endl;
     for (auto &lane : plaza) {
-        const int i = 1;
+        static int i = 1; //static, not const!
         cout << "Lane " << i << ":" << endl;
         for (auto &car : lane) {
             cout << "\t";
