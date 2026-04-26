@@ -35,11 +35,10 @@ int main() {
     cout << "Initial queue: " << endl;
     for (auto &lane : plaza) {
         static int i = 1; //static, not const!
-        cout << "Lane " << i << ":" << endl;
+        cout << "Lane " << i++ << ":" << endl;
         for (auto &car : lane) {
             cout << "\t"; car.print(); //to better mimic output
         }
-        i++;
     }
 
     //begin simulation
@@ -62,6 +61,21 @@ int main() {
                     temp.print();
                 }
             }
+        }
+        //print each lane's queue at the end of each time
+        for (auto &lane : plaza) {
+            static int i = 1;
+            cout << "Lane " << i++ << " Queue: ";
+            if (!lane.empty()) {
+                cout << "\n";
+                for (auto &car : lane) {
+                    cout << "\t"; car.print();
+                }
+            }
+            else
+                cout << "empty";
+            cout << endl;
+
         }
     }
 
