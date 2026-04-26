@@ -14,6 +14,7 @@ const int INITIAL_SIZE = 2;
 const int PAY_PROB = 46;
 const int JOIN_PROB = PAY_PROB + 39;
 const int SWITCH_PROB = JOIN_PROB + 15;
+const int EMPTY_PROB = 50;
 const int LANES = 4;
 const int RUNS = 5;
 
@@ -59,13 +60,23 @@ int main() {
                     plaza[i].push_back(temp);
                     temp.print();
                 }
-                else if (prob <= SWITCH_PROB) {
-                    
+                else if (prob <= SWITCH_PROB) { //car at back switches lanes
+                    cout << " Switched: "; plaza[i].back().print();
+                    //choose random lane to switch to
+                    int lane_index = rand() % LANES;
+                    //if index is same as current lane, add 1
+                    if (lane_index == i) {
+                        lane_index++;
+                        //if index is out of bounds
+                        //go back to index 0
+                        if (lane_index >= size(plaza))
+                            lane_index = 0;
+                    }
                 }
             }
             else { //lane is empty, 50/50 that a new car joins
                 int prob = rand() % 100 + 1;
-                if (prob <= MILESTONE4_PROB) {
+                if (prob <= EMPTY_PROB) {
                     cout << " Joined: ";
                     Car temp = Car();
                     plaza[i].push_back(temp);
@@ -91,38 +102,5 @@ int main() {
 
         }
     }
-
-    /*//begin simulation
-    while (!tollLine.empty()) {
-        static int i = 1;
-        cout << "Time: " << i++;
-        cout << " Operation: ";
-        //randomly choose pay or join
-        int prob = rand() % 100 + 1; //car in front pays and leaves
-        if (prob <= PAY_PROB) {
-            cout << "Car paid: ";
-            tollLine.front().print();
-            tollLine.pop_front();
-        }
-        else { //car joins the back of the queue
-            cout << "Joined lane: ";
-            Car temp = Car();
-            tollLine.push_back(temp);
-            temp.print();
-        }
-        //print queue at end of cycle
-        cout << "Queue: ";
-        if (!tollLine.empty()) {
-            cout << "\n";
-            for (auto &car : tollLine) {
-                cout << "\t";
-                car.print();
-            }
-        }
-        else 
-            cout << "empty";
-        cout << endl;
-    }
-
-    return 0; */
+    return 0;
 }
