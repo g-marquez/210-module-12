@@ -16,7 +16,7 @@ const int JOIN_PROB = PAY_PROB + 39;
 const int SWITCH_PROB = JOIN_PROB + 15;
 const int EMPTY_PROB = 50;
 const int LANES = 4;
-const int RUNS = 5;
+const int RUNS = 20;
 
 int main() {
     srand(time(0)); //for RNG
@@ -72,6 +72,10 @@ int main() {
                         if (lane_index >= size(plaza))
                             lane_index = 0;
                     }
+                    //now safe to switch car to new lane
+                    plaza[lane_index].push_back(plaza[i].back());
+                    //and remove car from current lane
+                    plaza[i].pop_back();
                 }
             }
             else { //lane is empty, 50/50 that a new car joins
