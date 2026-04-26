@@ -11,11 +11,11 @@
 using namespace std;
 
 const int INITIAL_SIZE = 2;
-const int PAY_PROB = 55;
-const int JOIN_PROB = 45;
+const int PAY_PROB = 46;
+const int JOIN_PROB = PAY_PROB + 39;
+const int SWITCH_PROB = JOIN_PROB + 15;
 const int LANES = 4;
 const int RUNS = 5;
-const int MILESTONE4_PROB = 50;
 
 int main() {
     srand(time(0)); //for RNG
@@ -49,15 +49,18 @@ int main() {
             cout << "Lane: " << i + 1;
             if (!plaza[i].empty()) {
                 int prob = rand() % 100 + 1; //car in front pays and leaves
-                if (prob <= MILESTONE4_PROB) {
+                if (prob <= PAY_PROB) {
                     cout << " Paid: "; plaza[i].front().print();
                     plaza[i].pop_front();
                 }
-                else { //car joins the back of the queue
+                else if (prob <= JOIN_PROB) { //car joins the back of the queue
                     cout << " Joined: ";
                     Car temp = Car();
                     plaza[i].push_back(temp);
                     temp.print();
+                }
+                else if (prob <= SWITCH_PROB) {
+                    
                 }
             }
             else { //lane is empty, 50/50 that a new car joins
@@ -69,7 +72,7 @@ int main() {
                     temp.print();
                 }
                 else 
-                    cout << " No change" << endl;
+                    cout << " No change" << endl; //just in case a car doesn't join
 
             }
         }
