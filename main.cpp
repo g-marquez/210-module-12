@@ -35,8 +35,7 @@ int main() {
         static int i = 1; //static, not const!
         cout << "Lane " << i << ":" << endl;
         for (auto &car : lane) {
-            cout << "\t";
-            car.print();
+            cout << "\t"; car.print(); //to better mimic output
         }
         i++;
     }
