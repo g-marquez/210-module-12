@@ -14,6 +14,8 @@ const int INITIAL_SIZE = 2;
 const int PAY_PROB = 55;
 const int JOIN_PROB = 45;
 const int LANES = 4;
+const int RUNS = 5;
+const int MILESTONE4_PROB = 50;
 
 int main() {
     srand(time(0)); //for RNG
@@ -38,6 +40,17 @@ int main() {
             cout << "\t"; car.print(); //to better mimic output
         }
         i++;
+    }
+
+    //begin simulation
+    //starting with 5 cycles for testing
+    for (int i = 0; i < RUNS; ++i) {
+        cout << "Time: " << i + 1 << endl;
+        for (auto &lane : plaza) {
+            if (!lane.empty()) {
+
+            }
+        }
     }
 
     /*//begin simulation
