@@ -45,42 +45,40 @@ int main() {
     //starting with 5 cycles for testing
     for (int i = 0; i < RUNS; ++i) {
         cout << "Time: " << i + 1 << endl;
-        for (auto &lane : plaza) {
-            static int i = 1;
-            cout << "Lane: " << i++;
-            if (!lane.empty()) {
+        for (int i = 0; i < size(plaza); i++) {
+            cout << "Lane: " << i + 1;
+            if (!plaza[i].empty()) {
                 int prob = rand() % 100 + 1; //car in front pays and leaves
                 if (prob <= MILESTONE4_PROB) {
-                    cout << "Paid: "; lane.front().print();
-                    lane.pop_front();
+                    cout << " Paid: "; plaza[i].front().print();
+                    plaza[i].pop_front();
                 }
                 else { //car joins the back of the queue
-                    cout << "Joined: ";
+                    cout << " Joined: ";
                     Car temp = Car();
-                    lane.push_back(temp);
+                    plaza[i].push_back(temp);
                     temp.print();
                 }
             }
             else { //lane is empty, 50/50 that a new car joins
                 int prob = rand() % 100 + 1;
                 if (prob <= MILESTONE4_PROB) {
-                    cout << "Joined: ";
+                    cout << " Joined: ";
                     Car temp = Car();
-                    lane.push_back(temp);
+                    plaza[i].push_back(temp);
                     temp.print();
                 }
                 else 
-                    cout << "No change" << endl;
+                    cout << " No change" << endl;
 
             }
         }
         //print each lane's queue at the end of each time
-        for (auto &lane : plaza) {
-            static int i = 1;
-            cout << "Lane " << i++ << " Queue: ";
-            if (!lane.empty()) {
+        for (int i = 0; i < size(plaza); i++) {
+            cout << "Lane " << i + 1 << " Queue: ";
+            if (!plaza[i].empty()) {
                 cout << "\n";
-                for (auto &car : lane) {
+                for (auto &car : plaza[i]) {
                     cout << "\t"; car.print();
                 }
             }
