@@ -43,29 +43,28 @@ int main() {
     }
 
     //begin simulation
-    //starting with 5 cycles for testing
     for (int i = 0; i < RUNS; ++i) {
         cout << "Time: " << i + 1 << endl;
-        for (int i = 0; i < size(plaza); i++) {
-            cout << "Lane: " << i + 1;
-            if (!plaza[i].empty()) {
+        for (int j = 0; j < size(plaza); j++) {
+            cout << "Lane: " << j + 1;
+            if (!plaza[j].empty()) {
                 int prob = rand() % 100 + 1; //car in front pays and leaves
                 if (prob <= PAY_PROB) {
-                    cout << " Paid: "; plaza[i].front().print();
-                    plaza[i].pop_front();
+                    cout << " Paid: "; plaza[j].front().print();
+                    plaza[j].pop_front();
                 }
                 else if (prob <= JOIN_PROB) { //car joins the back of the queue
                     cout << " Joined: ";
                     Car temp = Car();
-                    plaza[i].push_back(temp);
+                    plaza[j].push_back(temp);
                     temp.print();
                 }
                 else if (prob <= SWITCH_PROB) { //car at back switches lanes
-                    cout << " Switched: "; plaza[i].back().print();
+                    cout << " Switched: "; plaza[j].back().print();
                     //choose random lane to switch to
                     int lane_index = rand() % LANES;
                     //if index is same as current lane, add 1
-                    if (lane_index == i) {
+                    if (lane_index == j) {
                         lane_index++;
                         //if index is out of bounds
                         //go back to index 0
@@ -73,9 +72,9 @@ int main() {
                             lane_index = 0;
                     }
                     //now safe to switch car to new lane
-                    plaza[lane_index].push_back(plaza[i].back());
+                    plaza[lane_index].push_back(plaza[j].back());
                     //and remove car from current lane
-                    plaza[i].pop_back();
+                    plaza[j].pop_back();
                 }
             }
             else { //lane is empty, 50/50 that a new car joins
@@ -83,7 +82,7 @@ int main() {
                 if (prob <= EMPTY_PROB) {
                     cout << " Joined: ";
                     Car temp = Car();
-                    plaza[i].push_back(temp);
+                    plaza[j].push_back(temp);
                     temp.print();
                 }
                 else 
@@ -103,7 +102,6 @@ int main() {
             else
                 cout << "empty";
             cout << endl;
-
         }
     }
     return 0;
