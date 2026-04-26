@@ -61,6 +61,18 @@ int main() {
                     temp.print();
                 }
             }
+            else { //lane is empty, 50/50 that a new car joins
+                int prob = rand() % 100 + 1;
+                if (prob <= MILESTONE4_PROB) {
+                    cout << "Joined: ";
+                    Car temp = Car();
+                    lane.push_back(temp);
+                    temp.print();
+                }
+                else 
+                    cout << "No change" << endl;
+
+            }
         }
         //print each lane's queue at the end of each time
         for (auto &lane : plaza) {
