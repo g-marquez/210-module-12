@@ -47,8 +47,20 @@ int main() {
     for (int i = 0; i < RUNS; ++i) {
         cout << "Time: " << i + 1 << endl;
         for (auto &lane : plaza) {
+            static int i = 1;
+            cout << "Lane: " << i++;
             if (!lane.empty()) {
-
+                int prob = rand() % 100 + 1; //car in front pays and leaves
+                if (prob <= MILESTONE4_PROB) {
+                    cout << "Paid: "; lane.front().print();
+                    lane.pop_front();
+                }
+                else { //car joins the back of the queue
+                    cout << "Joined: ";
+                    Car temp = Car();
+                    lane.push_back(temp);
+                    temp.print();
+                }
             }
         }
     }
